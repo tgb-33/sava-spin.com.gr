@@ -1,0 +1,96 @@
+<!-- META -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{{- $pageTitle := .Title -}}
+{{- $siteTitle := .Site.Title -}}
+<title>{{ if ne .Title $siteTitle }}{{ .Title }}{{ else }}{{ $siteTitle }}{{ end }}</title>
+
+{{- $pageDescription := .Description | default (.Summary | plainify | truncate 160) -}}
+{{- $siteDescription := .Site.Params.description -}}
+<meta name="description" content="{{ $pageDescription | default $siteDescription | plainify }}">
+
+{{- $pageKeywords := .Params.keywords -}}
+{{- $siteKeywords := .Site.Params.keywords -}}
+{{- with $pageKeywords | default $siteKeywords -}}
+  {{- $keywordsString := delimit . ", " -}}
+  <meta name="keywords" content="{{ $keywordsString | plainify }}">
+{{- end -}}
+{{- with .Site.Params.author -}}<meta name="author" content="{{ . }}">{{- end -}}
+
+{{- with .OutputFormats.Get "canonical" -}}
+  <link rel="canonical" href="{{ .Permalink }}">
+{{- else -}}
+  <link rel="canonical" href="{{ .Permalink }}">
+{{- end -}}
+
+<!-- FAVICON ICON -->
+{{- $favicon := .Site.Params.faviconPNG | default "/images/favicon.png" -}}
+<link rel="shortcut icon" href="{{ $favicon | relURL }}" type="image/x-icon" />
+{{- /* PWA icons - Assuming python script generates these */ -}}
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "/apple-touch-icon.png" | relURL }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ replace $favicon ".png" "-32x32.png" | relURL }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ replace $favicon "-32x32.png" "-16x16.png" | relURL }}">
+<link rel="manifest" href="{{ "/site.webmanifest" | relURL }}">
+<meta name="msapplication-TileColor" content="#da532c"> {{- /* Default color, maybe make configurable? */ -}}
+<meta name="theme-color" content="#ffffff"> {{- /* Default color, maybe make configurable? */ -}}
+
+
+<!-- ALL GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+<!-- BOOTSTRAP CSS -->
+<link rel="stylesheet" href="{{ "css/bootstrap.min.css" | relURL }}" />
+<!-- FONT AWESOME CSS -->
+<link rel="stylesheet" href="{{ "fonts/remixicon.css" | relURL }}" />
+<!-- MAGNIFIC CSS -->
+<link rel="stylesheet" href="{{ "css/magnific-popup.css" | relURL }}">
+<!-- NICE SELECT CSS -->
+<link rel="stylesheet" href="{{ "css/nice-select.min.css" | relURL }}" />
+<!-- ANIMATE CSS -->
+<link rel="stylesheet" href="{{ "css/animate.min.css" | relURL }}" />
+<!-- SLICK CSS -->
+<link rel="stylesheet" href="{{ "css/slick.min.css" | relURL }}" />
+<!-- SPACING CSS -->
+<link rel="stylesheet" href="{{ "css/spacing.css" | relURL }}" />
+<!-- MAIN STYLE CSS -->
+<link rel="stylesheet" href="{{ "css/style.css" | relURL }}" />
+<!-- RESPONSIVE CSS -->
+<link rel="stylesheet" href="{{ "css/responsive.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/custom.css" | relURL }}" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:title" content="{{ $pageTitle }}">
+<meta property="og:description" content="{{ $pageDescription | default $siteDescription | plainify }}">
+{{- with .Params.image | default .Site.Params.logo -}}
+<meta property="og:image" content="{{ . | absURL }}">
+{{- end -}}
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ .Permalink }}">
+<meta property="twitter:title" content="{{ $pageTitle }}">
+<meta property="twitter:description" content="{{ $pageDescription | default $siteDescription | plainify }}">
+{{- with .Params.image | default .Site.Params.logo -}}
+<meta property="twitter:image" content="{{ . | absURL }}">
+{{- end -}}
+
+{{- $robotsContent := .Site.Params.defaultRobotsMetaTag | default "index, follow" -}}
+{{- with .Params.robots -}}{{- $robotsContent = . -}}{{- end -}}
+<meta name="robots" content="{{ $robotsContent }}">
+
+{{- partial "schema.html" . -}}
+
+{{- hugo.Generator -}}
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->

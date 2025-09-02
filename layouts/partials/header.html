@@ -1,0 +1,84 @@
+<header class="main-header">
+    <div class="header-upper">
+        <div class="container">
+            <div class="header-inner d-flex align-items-center">
+                <!-- START LOGO DESIGN AREA -->
+                <div class="logo-outer">
+                    {{- partial "logo.html" . -}} {{- /* Подключаем логотип */ -}}
+                </div>
+                <!-- / END LOGO DESIGN AREA -->
+
+                <!-- START NAV DESIGN AREA -->
+                <div class="nav-outer clearfix mx-auto">
+                    {{- /* Убран navbar-expand-lg т.к. управление показом/скрытием идет через JS/CSS */ -}}
+                    <nav class="main-menu">
+                        <div class="navbar-header">
+                            {{- /* Логотип для мобильного меню (может быть тем же) */ -}}
+                            <div class="mobile-logo">
+                                {{- partial "logo.html" . -}}
+                            </div>
+                            {{- /* Кнопка-бургер для переключения мобильного меню */ -}}
+                            <button type="button" class="navbar-toggle mobile-menu-toggle" aria-label="Toggle navigation"> {{- /* Класс mobile-menu-toggle важен для JS */ -}}
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        {{- /* Контейнер для основного меню, который будет скрываться/показываться на мобильных */ -}}
+                        {{- /* Класс .navbar-collapse важен для JS и оригинальных стилей Bootstrap (если используются) */ -}}
+                        <div class="navbar-collapse">
+                           {{- /* Проверяем, определено ли меню 'main' в конфиге сайта */ -}}
+                           {{- if .Site.Menus.main -}}
+                            {{- /* Основной список навигации */ -}}
+                            <ul class="navigation clearfix">
+                                {{- /* Перебираем пункты меню первого уровня, сортируя по весу */ -}}
+                                {{- range .Site.Menus.main.ByWeight -}}
+                                    {{- /* Определяем, является ли текущая страница этим пунктом меню или его потомком */ -}}
+                                    {{- $isCurrent := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) -}}
+                                    {{- /* Дополнительная проверка по URL (на случай если IsMenuCurrent не сработает) */ -}}
+                                    {{- $isCurrent = or $isCurrent (eq $.RelPermalink .URL) -}}
+                                    {{- /* Проверяем, есть ли у этого пункта дочерние элементы (подменю) */ -}}
+                                    {{- $hasChildren := .HasChildren -}}
+                                 {{- /* Добавляем класс has-children, если есть подменю - важно для JS/CSS */ -}}
+                                 <li class="{{ if $hasChildren }}has-children{{ end }}{{ if $isCurrent }} current-menu-item{{ end }}"> {{- /* Можно добавить класс для активного пункта */ -}}
+                                     {{- /* Ссылка меню. Класс nav-link-click используется JS для закрытия меню */ -}}
+                                     {{- /* ВАЖНО: Для родительских пунктов, которые *только* открывают подменю на мобильных, */ -}}
+                                     {{- /* установите URL равным "#" в конфиге меню Hugo */ -}}
+                                     <a class="nav-link-click {{- if $isCurrent }} active{{ end }}" href="{{ .URL | relURL }}">
+                                         {{ .Name }} {{- /* Название пункта меню */ -}}
+                                         {{- /* Добавляем индикатор выпадающего списка (стрелку) для десктопа */ -}}
+                                         {{- if $hasChildren }}<span class="dropdown-indicator ms-1">▼</span>{{ end -}}
+                                     </a>
+                                     {{- /* Если есть подменю, выводим его */ -}}
+                                     {{- if $hasChildren -}}
+                                         <ul class="sub-menu"> {{- /* Класс sub-menu важен для JS/CSS */ -}}
+                                             {{- /* Перебираем дочерние пункты */ -}}
+                                             {{- range .Children.ByWeight -}}
+                                                {{- /* Проверка активности для подменю */ -}}
+                                                {{- $isCurrentSub := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) -}}
+                                                {{- $isCurrentSub = or $isCurrentSub (eq $.RelPermalink .URL) -}}
+                                                 <li><a class="nav-link-click {{- if $isCurrentSub }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+                                             {{- end -}}
+                                         </ul>
+                                         {{- /* Кнопка <button class="dropdown-btn">...</button> для мобильных будет добавлена автоматически скриптом script.js */ -}}
+                                     {{- end -}}
+                                 </li>
+                                {{- end -}}
+                            </ul>
+                           {{- end -}}
+                        </div>
+                    </nav>
+                </div>
+                <!-- / END NAV DESIGN AREA -->
+
+               <!-- Header Controls (например, кнопка "Play Now") -->
+               <div class="header-controls d-flex align-items-center">
+                     <div class="hero-btns">
+                        {{- partial "play-button.html" . -}} {{- /* Подключаем кнопку Play */ -}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>

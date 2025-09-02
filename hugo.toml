@@ -1,0 +1,99 @@
+baseURL = "https://sava-spin.com/"
+defaultContentLanguage = "el-GR"
+title = "sava-spin"
+enableRobotsTXT = true
+buildFuture = true
+
+[pagination]
+pagerSize = 10
+
+[params]
+defaultRobotsMetaTag = "index, follow"
+description = ""
+keywords = []
+logo = "/images/logo.png"
+footerLogo = ""
+faviconPNG = "/images/favicon-32x32.png"
+playButtonText = "Jogar Agora"
+referralBaseUrl = "https://27d75jeosf.top/RC2TZM"
+activeGoogleFonts = [ "Inter:wght@400;600;700", "Poppins:wght@700",]
+demoIframeCode = ""
+
+[build]
+writeStats = true
+
+[params.organization]
+name = ""
+
+[params.contact]
+address_text = "Αρμάτων 20,, 189 75 Κιλκίς"
+address_url = "https://www.google.com/maps/search/?api=1&query=%CE%91%CF%81%CE%BC%CE%AC%CF%84%CF%89%CE%BD+20%2C%2C+189+75+%CE%9A%CE%B9%CE%BB%CE%BA%CE%AF%CF%82"
+phone_display = "210 808 5032"
+phone_link = "tel:2108085032"
+email = "info@sava-spin.com"
+_locale = "el-GR"
+
+[params.contactForm]
+action = ""
+netlify = false
+
+[params.uiText]
+footerCopyright = "© {year} {siteTitle}. Ολα τα δικαιώματα διατηρούνται."
+footerDisclaimerTitleRG = "ΥΠΕΥΘΥΝΟ ΠΑΙΧΝΙΔΙ"
+footerDisclaimerResponsible = "υποστηρίζει μια υπεύθυνη προσέγγιση στα τυχερά παιχνίδια και συνεργάζεται στενά με συνεργάτες που μοιράζονται αυτήν την βασική αρχή. Τα online τυχερά παιχνίδια πρέπει να προσφέρουν χαρά και ψυχαγωγία, όχι φόβο ή άγχος για οικονομικές απώλειες. Αν νιώσετε ότι σας πιέζει το παιχνίδι στην πλατφόρμα μας, κάντε ένα διάλειμμα για να ανακτήσετε τον έλεγχο και την ψυχραιμία σας."
+footerDisclaimerTitleAff = "ΠΑΙΞΤΕ ΥΠΕΥΘΥΝΑ"
+footerDisclaimerAffiliate = "είναι ένας ανεξάρτητος ιστότοπος, μη συνδεδεμένος με τους πόρους που προτείνουμε. Πριν επισκεφθείτε ένα καζίνο ή κάνετε ένα στοίχημα, βεβαιωθείτε ότι πληροίτε όλες τις νομικές και ηλικιακές προϋποθέσεις. Ο στόχος μας είναι να παρέχουμε πληροφορίες και ψυχαγωγία με έμφαση στην εκπαίδευση. Ακολουθώντας τους συνδέσμους, σημειώστε ότι φεύγετε από τον ιστότοπό μας."
+menuHome = "Αρχική"
+menuAbout = "Σχετικά με εμάς"
+menuCasino = "Πού να παίξετε"
+menuDemo = "Demo"
+menuApp = "App"
+menuContacts = "Επικοινωνία"
+menuCookiePolicy = "Πολιτική Cookies"
+menuPrivacyPolicy = "Πολιτική Απορρήτου"
+menuResponsibleGambling = "Υπεύθυνο Παιχνίδι"
+menuTermsConditions = "Όροι και Προϋποθέσεις"
+playButtonText = "Παίξε"
+contactPageTitle = "Επικοινωνία"
+contactInfoTitle = "Στοιχεία επικοινωνίας"
+contactFormTitle = "Αποστολή μηνύματος"
+contactLabelAddress = "Διεύθυνση"
+contactLabelPhone = "Τηλέφωνο"
+contactLabelEmail = "E-mail"
+contactLabelHours = "Ωράριο λειτουργίας"
+contactFormLabelName = "Το όνομά σας"
+contactFormLabelPhone = "Αριθμός τηλεφώνου"
+contactFormLabelEmail = "E-mail"
+contactFormLabelMessage = "Μήνυμα"
+contactFormButtonSubmit = "Αποστολή μηνύματος"
+contactFormRequiredNotice = "Υποχρεωτικά πεδία"
+listReadMore = "Διαβάστε περισσότερα →"
+paginationPrevious = "« Προηγούμενο"
+paginationNext = "Επόμενο »"
+paginationAriaPrevious = "Προηγούμενη σελίδα"
+paginationAriaNext = "Επόμενη σελίδα"
+paginationAriaGoToPage = "Μετάβαση στη σελίδα {pageNumber}"
+tocTitle = "Πίνακας περιεχομένων"
+breadcrumbHome = "Αρχική"
+contactFormPlaceholderName = "Όνομα Επίθετο"
+contactFormPlaceholderPhone = "Αριθμός τηλεφώνου"
+contactFormPlaceholderEmail = "your.email@example.com"
+contactFormPlaceholderMessage = "Γράψτε το μήνυμά σας εδώ..."
+notFoundTitle = "404 Δεν βρέθηκε"
+notFoundHeading = "Οups! Δεν βρέθηκε η σελίδα."
+notFoundText = "Η σελίδα που ψάχνετε δεν υπάρχει."
+faqTitle = "Συχνές Ερωτήσεις"
+_language = "custom"
+
+[build.buildStats]
+enable = true
+
+[build.cachebusters]
+enable = true
+sourceMaps = false
+
+[languages]
+ [languages.el-GR]
+  languageName = "Modern Greek"
+  languageCode = "el-GR"
+  weight = 1

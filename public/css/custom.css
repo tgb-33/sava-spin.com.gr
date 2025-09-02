@@ -1,0 +1,916 @@
+/* static/css/custom.css */
+
+/* --- Footer Styling --- */
+.main-footer {
+    background-color: #111827;
+    /* Dark background like theme1 */
+    color: #adb5bd;
+    /* Light gray text */
+    padding-top: 3rem;
+    /* pt-5 */
+    padding-bottom: 2rem;
+    /* Немного меньше чем pt-5 */
+    font-size: 0.9em;
+    border-top: 4px solid #4F46E5;
+    /* Primary color border like theme1 */
+}
+
+.main-footer .container {
+    max-width: 1140px;
+    /* Standard Bootstrap container width */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    /* Standard Bootstrap padding */
+    padding-right: 15px;
+}
+
+.main-footer a {
+    color: #dee2e6;
+    /* Slightly brighter links */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.main-footer a:hover {
+    color: #ffffff;
+    /* White on hover */
+}
+
+.footer-top {
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* pb-4 */
+    margin-bottom: 1.5rem;
+    /* mb-4 */
+    border-bottom: 1px solid rgba(108, 117, 125, 0.25);
+    /* border-secondary with opacity */
+}
+
+.footer-logo img {
+    max-height: 40px;
+    /* Consistent logo height */
+    width: auto;
+}
+
+
+
+.footer-navigation .footer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    /* Spacing between menu items */
+    justify-content: flex-end;
+    /* Align menu to the right on desktop */
+}
+
+.footer-navigation .footer-menu a {
+    font-weight: 500;
+    /* medium weight */
+    color: #adb5bd;
+}
+
+.footer-navigation .footer-menu a:hover {
+    color: #fff;
+}
+
+.footer-content-area {
+    padding-bottom: 1.5rem;
+    /* pb-4 */
+    margin-bottom: 1.5rem;
+    /* mb-4 */
+    border-bottom: 1px solid rgba(108, 117, 125, 0.25);
+    /* border-secondary with opacity */
+}
+
+.responsible-gaming-info h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    /* bold */
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    /* White headings */
+    text-transform: uppercase;
+    /* Like theme1 */
+}
+
+.responsible-gaming-info p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #adb5bd;
+    /* Light gray text */
+    margin-bottom: 1rem;
+}
+
+.responsible-gaming-info p:last-child {
+    margin-bottom: 0;
+}
+
+.responsible-gaming-info p strong {
+    color: #ffffff;
+    /* White for emphasis */
+    font-weight: 600;
+    /* semibold */
+}
+
+.footer-copyright p {
+    font-size: 0.85em;
+    color: #6c757d;
+    /* Darker gray for copyright */
+    margin: 0;
+}
+
+.footer-copyright a {
+    color: #adb5bd;
+    /* Ссылки в копирайте чуть светлее */
+    font-weight: 500;
+}
+
+.footer-copyright a:hover {
+    color: #fff;
+}
+
+
+.footer-casino-logos .logo-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    /* More space for logos */
+    align-items: center;
+    justify-content: flex-end;
+    /* Align logos to the right on desktop */
+}
+
+.footer-casino-logos .casino-logo-item img {
+    display: block;
+    max-height: 30px;
+    /* Slightly smaller logos */
+    width: auto;
+    max-width: 100px;
+    filter: grayscale(80%) contrast(120%) brightness(150%);
+    /* Make them look like theme1 */
+    opacity: 0.7;
+    transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.footer-casino-logos .casino-logo-item img:hover {
+    opacity: 1;
+    filter: none;
+}
+
+/* Footer Responsive */
+@media (max-width: 767.98px) {
+
+    .main-footer .footer-top,
+    .main-footer .footer-bottom {
+        text-align: center;
+    }
+
+    .main-footer .footer-navigation .footer-menu {
+        justify-content: center;
+        /* Center menu on mobile */
+        margin-top: 1rem;
+    }
+
+    .main-footer .footer-logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .main-footer .footer-content-area {
+        text-align: left;
+    }
+
+    .main-footer .footer-casino-logos .logo-items {
+        justify-content: center;
+        /* Center logos on mobile */
+    }
+
+    .main-footer .footer-copyright {
+        margin-top: 1rem;
+        order: 2;
+        text-align: center;
+        /* Центрируем копирайт */
+    }
+
+    .main-footer .footer-casino-logos {
+        order: 1;
+        margin-bottom: 1rem;
+    }
+}
+
+/* --- Play Button Styling --- */
+.theme-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-transform: none;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* Кнопка Play в хедере */
+.main-header .header-controls .play-button {
+    background-color: rgb(196, 240, 0);
+    /* Салатовый */
+    color: #212529 !important;
+    /* Темный текст */
+    border-color: rgb(196, 240, 0);
+    box-shadow: 0 2px 4px rgba(158, 192, 0, 0.3);
+}
+
+.main-header .header-controls .play-button:hover {
+    background-color: rgb(176, 216, 0);
+    /* Темнее салатовый */
+    border-color: rgb(176, 216, 0);
+    color: #212529 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(158, 192, 0, 0.4);
+}
+
+/* Скрыть кнопку .play-button в хедере на экранах меньше 768px (точнее, < md) */
+/* Оставим это, чтобы не конфликтовало с мобильным меню на маленьких экранах */
+@media (max-width: 767.98px) {
+    .main-header .header-controls .hero-btns {
+        /* Скрываем весь блок hero-btns */
+        display: none;
+    }
+}
+
+
+/* Кнопка в секции Call to Action */
+.call-to-action-area .call-to-action-button {
+    background-color: #4F46E5;
+    /* Синий */
+    color: #ffffff !important;
+    border-color: #4F46E5;
+    box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+    padding: 0.75rem 1.75rem;
+    /* Чуть больше */
+}
+
+.call-to-action-area .call-to-action-button:hover {
+    background-color: #4338CA;
+    /* Темнее синий */
+    border-color: #4338CA;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(79, 70, 229, 0.3);
+}
+
+/* --- Breadcrumbs Styling --- */
+.breadcrumbs {
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    padding-top: 1rem;
+}
+
+.breadcrumbs ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.breadcrumbs li {
+    display: inline-flex;
+    align-items: center;
+}
+
+.breadcrumbs li::after {
+    content: '/';
+    color: #d1d5db;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.breadcrumbs li:last-child::after {
+    content: '';
+    margin: 0;
+}
+
+.breadcrumbs a {
+    color: #4F46E5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.breadcrumbs a:hover {
+    color: #4338CA;
+    text-decoration: underline;
+}
+
+.breadcrumbs .active span {
+    color: #fff;
+    font-weight: 500;
+}
+
+/* --- Table Styling --- */
+.content-area table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.95em;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    border-radius: 0.375rem;
+    overflow: hidden;
+    /* Important for border-radius with tables */
+}
+
+.content-area thead {
+    background-color: #f9fafb;
+}
+
+.content-area th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.content-area tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.content-area tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.content-area tbody tr:last-child {
+    border-bottom: none;
+}
+
+.content-area td {
+    padding: 0.75rem 1rem;
+    color: #4b5563;
+    vertical-align: top;
+    /* Usually better for table data */
+}
+
+@media (max-width: 767.98px) {
+
+    /* Mobile table scrolling */
+    .content-area table {
+        display: block;
+        /* Make table scrollable */
+        width: 100%;
+        overflow-x: auto;
+        /* Enable horizontal scroll */
+        white-space: nowrap;
+        /* Prevent content wrapping */
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scrolling on iOS */
+        border-radius: 0;
+        /* Remove radius for mobile view if needed */
+        border-left: none;
+        /* Remove side borders if using full width */
+        border-right: none;
+    }
+
+    /* Ensure table elements behave correctly within the scrolling block */
+    .content-area thead,
+    .content-area tbody,
+    .content-area tr {
+        display: table;
+        /* Keep internal table structure */
+        width: 100%;
+        /* Let them expand */
+        table-layout: auto;
+        /* Auto column widths */
+    }
+
+    .content-area th,
+    .content-area td {
+        white-space: nowrap;
+        /* Ensure cell content doesn't wrap */
+        display: table-cell;
+    }
+}
+
+
+/* --- Responsive Heading Styles --- */
+@media (max-width: 767.98px) {
+    .about-content-part h1 {
+        font-size: 2rem;
+        line-height: 1.3;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .about-content-part h2 {
+        font-size: 1.75rem;
+        line-height: 1.35;
+        margin-top: 1.25rem;
+        margin-bottom: 0.875rem;
+    }
+
+    .about-content-part h3 {
+        font-size: 1.5rem;
+        line-height: 1.4;
+        margin-top: 1.125rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .about-content-part h4 {
+        font-size: 1.25rem;
+        line-height: 1.4;
+        margin-top: 1rem;
+        margin-bottom: 0.625rem;
+    }
+
+    .about-content-part h5 {
+        font-size: 1.125rem;
+        line-height: 1.5;
+        margin-top: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .about-content-part h6 {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-top: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* --- Header Dropdown Menu Styling (Desktop) --- */
+/* Keep desktop styles separate for clarity */
+@media (min-width: 992px) {
+    .main-header .navigation li {
+        position: relative;
+    }
+
+    .main-header .navigation ul.sub-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 200px;
+        background-color: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-top: 3px solid #4F46E5;
+        border-radius: 0 0 0.375rem 0.375rem;
+        padding: 0.5rem 0;
+        margin: 0;
+        list-style: none;
+        z-index: 1001;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    }
+
+    .main-header .navigation ul.sub-menu li {
+        width: 100%;
+        margin: 0;
+    }
+
+    .main-header .navigation ul.sub-menu a {
+        display: block;
+        padding: 0.6rem 1.2rem;
+        color: #374151;
+        font-weight: 500;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        text-decoration: none;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        border-bottom: none !important;
+        /* Override potential global styles */
+        height: auto !important;
+        /* Override potential global styles */
+    }
+
+    .main-header .navigation ul.sub-menu a:hover,
+    .main-header .navigation ul.sub-menu a.active,
+    .main-header .navigation ul.sub-menu a:focus {
+        background-color: #f3f4f6;
+        color: #4F46E5;
+        outline: none;
+    }
+
+    /* Desktop Hover Behavior */
+    .main-header .navigation li.has-children:hover>ul.sub-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        display: block;
+        /* Ensure display block on hover */
+    }
+
+    .main-header .navigation li.has-children:hover>a .dropdown-indicator {
+        transform: rotate(180deg);
+    }
+
+    /* Hide mobile-specific elements on desktop */
+    .main-header .navigation .dropdown-btn {
+        display: none !important;
+    }
+
+    /* Hide mobile button */
+    .main-header .navbar-toggle {
+        display: none !important;
+    }
+
+    /* Hide burger */
+
+    /* Desktop Dropdown Indicator Arrow in Link */
+    .main-header .navigation a .dropdown-indicator {
+        display: inline-block;
+        font-size: 0.7em;
+        vertical-align: middle;
+        transition: transform 0.2s ease-in-out;
+        opacity: 0.6;
+        margin-left: 0.25rem;
+        /* Добавил ms-1 */
+    }
+}
+
+/* End @media (min-width: 992px) */
+
+
+/* --- Mobile Menu Styles (Force Override) --- */
+/* --- Mobile Menu Styles (Final Tweaks) --- */
+@media (max-width: 991.98px) {
+
+    /* --- Показываем и стилизуем бургер --- */
+    .main-header .navbar-toggle.mobile-menu-toggle {
+        display: block !important;
+        /* Убедимся, что бургер видим */
+        position: relative;
+        order: 3;
+        /* Может помочь разместить справа */
+        background: none !important;
+        /* Убираем фон кнопки */
+        border: none !important;
+        /* Убираем рамку кнопки */
+        padding: 5px !important;
+        /* Небольшой отступ */
+        margin: 0;
+        /* Убираем внешние отступы */
+        cursor: pointer;
+        z-index: 1001;
+        /* Выше меню */
+    }
+
+    /* Стили для иконки-гамбургера (полоски) */
+    .main-header .navbar-toggle .icon-bar {
+        background-color: #333 !important;
+        /* Цвет полосок (темный) */
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 1px;
+        margin: 4px 0;
+        /* Расстояние между полосками */
+        transition: all 0.3s ease-in-out;
+        /* Плавный переход для анимации */
+    }
+
+    /* Стиль для активной кнопки-гамбургера (Крестик) */
+    .main-header .navbar-toggle.mobile-menu-toggle.active .icon-bar:nth-of-type(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .main-header .navbar-toggle.mobile-menu-toggle.active .icon-bar:nth-of-type(2) {
+        opacity: 0;
+    }
+
+    .main-header .navbar-toggle.mobile-menu-toggle.active .icon-bar:nth-of-type(3) {
+        transform: translateY(-12px) rotate(-45deg);
+    }
+
+
+    /* --- Контейнер мобильного меню --- */
+    .main-header .navbar-collapse {
+        /* Изначально скрыт, display будет управляться через JS (slideToggle) */
+        /* Убрали display: none !important; */
+        display: none;
+        position: absolute !important;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: #ffffff !important;
+        /* Белый фон */
+        border-top: 1px solid #dee2e6;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        padding: 0 !important;
+        margin: 0 !important;
+        z-index: 1000;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        float: none !important;
+    }
+
+    /* Показываем меню по клику на бургер (класс на body) */
+    /* JS добавит display: block через style, это перебьет display: none выше */
+    /* body.mobile-menu-visible .navbar-collapse { */
+    /* display: block !important; <-- Этот стиль больше не нужен здесь, JS справится */
+    /* } */
+
+    /* --- Список навигации --- */
+    .main-header .navigation {
+        display: block !important;
+        list-style: none !important;
+        padding: 0.5rem 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        float: none !important;
+    }
+
+    /* --- Пункты списка --- */
+    .main-header .navigation>li {
+        display: block !important;
+        width: 100% !important;
+        float: none !important;
+        border-bottom: 1px solid #f0f0f0;
+        position: relative;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .main-header .navigation>li:last-child {
+        border-bottom: none;
+    }
+
+    /* --- Ссылки основного уровня --- */
+    .main-header .navigation>li>a.nav-link-click {
+        display: block !important;
+        padding: 1rem 1.5rem;
+        /* Новый цвет текста - темный для контраста с белым фоном */
+        color: #fff !important;
+        /* Темно-серый / Почти черный */
+        font-weight: 500 !important;
+        text-decoration: none !important;
+        background-color: transparent !important;
+        border: none !important;
+        line-height: normal !important;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Стили при наведении/активности */
+    .main-header .navigation>li>a.nav-link-click.active,
+    .main-header .navigation>li>a.nav-link-click:hover {
+        /* Акцентный цвет текста */
+        color: #4F46E5 !important;
+        background-color: #f8f9fa !important;
+        /* Светлый фон */
+    }
+
+    /* Стиль для родителя открытого подменю */
+    .main-header .navigation>li.has-children.submenu-open>a.nav-link-click {
+        background-color: #e9ecef !important;
+        /* Более темный фон */
+        color: #4F46E5 !important;
+        /* Акцентный цвет текста */
+    }
+
+    .main-header .navigation li.has-children>a.nav-link-click {
+        padding-right: 60px !important;
+    }
+
+    .main-header .navigation a .dropdown-indicator {
+        display: none !important;
+    }
+
+    /* --- Кнопка раскрытия подменю --- */
+    .main-header .navigation .dropdown-btn {
+        display: flex !important;
+        position: absolute !important;
+        right: 0 !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        width: 60px !important;
+        background: transparent !important;
+        border: none !important;
+        border-left: 1px solid #f0f0f0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        color: #6c757d !important;
+        z-index: 5;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .main-header .navigation .dropdown-btn:hover {
+        background-color: #f8f9fa !important;
+        color: #4F46E5 !important;
+    }
+
+    .main-header .navigation .dropdown-btn i {
+        font-size: 1.5rem !important;
+        color: inherit !important;
+        transition: transform 0.3s ease;
+        transform: rotate(0deg);
+    }
+
+    .main-header .navigation li.has-children.submenu-open>.dropdown-btn i,
+    .main-header .navigation .dropdown-btn i.rotate-180 {
+        transform: rotate(180deg);
+        color: #4F46E5 !important;
+    }
+
+    /* --- Мобильное подменю --- */
+    .main-header .navigation ul.sub-menu {
+        display: none;
+        /* Управляется JS */
+        position: static !important;
+        width: 100% !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        background-color: #f8f9fa !important;
+        /* Светлый фон для подменю */
+        padding: 0.5rem 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+        border-top: 1px solid #dee2e6 !important;
+        float: none !important;
+    }
+
+    .main-header .navigation ul.sub-menu li {
+        display: block !important;
+        width: 100% !important;
+        float: none !important;
+        border: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Ссылки подменю - ОСТАВЛЯЕМ ТЕМНЫМИ для контраста с фоном #f8f9fa */
+    .main-header .navigation ul.sub-menu a {
+        display: block !important;
+        padding: 0.8rem 1.5rem 0.8rem 2.5rem !important;
+        color: #495057 !important;
+        /* Темно-серый текст подменю */
+        font-size: 0.9rem !important;
+        font-weight: 400 !important;
+        text-decoration: none !important;
+        background-color: transparent !important;
+        border: none !important;
+        border-bottom: 1px solid #e9ecef !important;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .main-header .navigation ul.sub-menu li:last-child a {
+        border-bottom: none !important;
+    }
+
+    .main-header .navigation ul.sub-menu a.active,
+    .main-header .navigation ul.sub-menu a:hover {
+        color: #4F46E5 !important;
+        /* Акцентный цвет */
+        background-color: #ffffff !important;
+        /* Белый фон при наведении */
+    }
+
+}
+
+/* Конец @media (max-width: 991.98px) */
+
+/* --- Table Styling --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.95em;
+    border: 1px solid #e5e7eb;
+    /* Светлая граница */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    /* Легкая тень */
+    border-radius: 0.375rem;
+    /* Скругленные углы */
+    overflow: hidden;
+    /* Чтобы radius работал с фоном */
+}
+
+thead {
+    background-color: #f9fafb;
+    /* Светлый фон для шапки */
+}
+
+th {
+    padding: 0.75rem 1rem;
+    /* Отступы в ячейках шапки */
+    text-align: left;
+    /* Выравнивание текста */
+    font-weight: 600;
+    /* Полужирный шрифт */
+    color: #374151;
+    /* Темно-серый текст */
+    border-bottom: 2px solid #e5e7eb;
+    /* Линия под шапкой */
+}
+
+tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+    /* Разделитель строк */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+    /* Чередование фона строк */
+}
+
+tbody tr:nth-child(odd) td {
+    color: #f9fafb;
+    /* Чередование фона строк */
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+    /* Убрать границу у последней строки */
+}
+
+td {
+    padding: 0.75rem 1rem;
+    /* Отступы в ячейках данных */
+    color: #4b5563;
+    /* Серый текст */
+    vertical-align: top;
+    /* Выравнивание по верху для длинного текста */
+}
+
+/* --- Responsive Table Styling --- */
+@media (max-width: 767.98px) {
+
+    /* Делаем таблицу горизонтально прокручиваемой на мобильных */
+    table {
+        display: grid;
+        /* Меняем display для возможности overflow */
+        width: 100%;
+        overflow-x: auto;
+        /* Добавляем горизонтальный скролл */
+        white-space: nowrap;
+        /* Запрещаем перенос текста в ячейках */
+        -webkit-overflow-scrolling: touch;
+        /* Плавный скролл на iOS */
+        border-radius: 0;
+        /* Можно убрать скругление на мобильных */
+        border-left: none;
+        /* Убрать боковые границы, если занимает всю ширину */
+        border-right: none;
+    }
+
+    /* Важно для сохранения структуры внутри скроллящегося блока */
+    thead, tbody {
+        display: table;
+        /* Сохраняем табличное отображение внутри */
+        width: 100%;
+        /* Позволяем занять всю доступную ширину */
+        table-layout: auto;
+        /* Автоматическая ширина колонок */
+    }
+
+    th,
+    .content-area td {
+        white-space: nowrap;
+        /* Еще раз убедимся, что не переносится */
+        display: table-cell;
+        /* Ведут себя как ячейки */
+    }
+}
+
+.page404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+@media (max-width: 768px) {
+    .page404 {
+        padding-top: 150px;
+        align-items: start;
+        text-align: start !important;
+    }
+}
+
+iframe {
+    border: 0;
+    width: 100%;
+    height: 500px;
+}

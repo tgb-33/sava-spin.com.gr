@@ -1,0 +1,28 @@
+{{- $paginator := .Paginator -}}
+{{- if gt $paginator.TotalPages 1 -}}
+<nav class="pagination flex justify-center space-x-2 my-8" aria-label="Pagination"> {{- /* Добавлены базовые стили */ -}}
+  <ul class="pagination-list inline-flex items-center -space-x-px">
+    {{- if $paginator.HasPrev -}}
+      <li><a href="{{ $paginator.Prev.URL }}" class="pagination-previous py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700" aria-label="{{ site.Params.uiText.paginationAriaPrevious | default " Previous page" }}">{{ site.Params.uiText.paginationPrevious | default "<< Previous" }}</a></li>
+    {{- else -}}
+      <li><span class="pagination-previous py-2 px-3 ml-0 leading-tight text-gray-400 bg-gray-50 rounded-l-lg border border-gray-300 cursor-not-allowed" aria-disabled="true">{{ site.Params.uiText.paginationPrevious | default "<< Previous" }}</span></li>
+    {{- end -}}
+
+    {{- range $paginator.Pagers -}}
+      {{- $ariaLabelTmpl := site.Params.uiText.paginationAriaGoToPage | default "Go to page {pageNumber}" -}}
+      {{- $ariaLabel := replace $ariaLabelTmpl "{pageNumber}" .PageNumber -}}
+      <li>
+        <a href="{{ .URL }}" class="pagination-link py-2 px-3 leading-tight border border-gray-300 {{- if eq . $paginator -}} text-blue-600 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 {{- else -}} text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700 {{- end -}}" aria-label="{{ $ariaLabel }}" {{- if eq . $paginator -}} aria-current="page" {{- end -}}>
+          {{ .PageNumber }}
+        </a>
+      </li>
+    {{- end -}}
+
+    {{- if $paginator.HasNext -}}
+      <li><a href="{{ $paginator.Next.URL }}" class="pagination-next py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700" aria-label="{{ site.Params.uiText.paginationAriaNext | default " Next page" }}">{{ site.Params.uiText.paginationNext | default "Next >>" }}</a></li>
+    {{- else -}}
+      <li><span class="pagination-next py-2 px-3 leading-tight text-gray-400 bg-gray-50 rounded-r-lg border border-gray-300 cursor-not-allowed" aria-disabled="true">{{ site.Params.uiText.paginationNext | default "Next >>" }}</span></li>
+    {{- end -}}
+  </ul>
+</nav>
+{{- end -}}

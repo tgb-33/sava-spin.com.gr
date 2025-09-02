@@ -1,0 +1,73 @@
+{{- define "main" -}}
+  {{- /* --- Hero Section --- */ -}}
+  <section class="single-page-hero-area">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-12">
+          <h2>{{ site.Params.uiText.aboutHeroTitle | default (.Title) }}</h2>
+          <p>{{ site.Params.uiText.aboutHeroDescription | default .Description }}</p>
+        </div>
+      </div>
+      {{- partial "counters.html" . -}} {{- /* Include counters partial */ -}}
+    </div>
+  </section>
+  {{- /* --- End Hero Section --- */ -}}
+
+  {{- /* --- About Section --- */ -}}
+  <section id="about" class="about-area">
+    <div class="container">
+      <div class="container-inner">
+        <div class="row align-items-center">
+          <div class="col-lg-5">
+            <div class="about-image-part wow fadeInUp delay-0-3s">
+              {{- with .Params.aboutImage | default "assets/images/about/me.jpg" -}}
+                {{- $img := resources.Get . -}}
+                {{- if $img -}}
+                  <img src="{{ $img.RelPermalink }}" alt="{{ site.Params.uiText.aboutHeroTitle | default $.Title }}" />
+                {{- else -}}
+                  <img src="{{ . | relURL }}" alt="{{ site.Params.uiText.aboutHeroTitle | default $.Title }}" />
+                {{- end -}}
+              {{- end -}}
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="about-content-part wow fadeInUp delay-0-5s">
+              <h2>
+                {{ site.Params.uiText.aboutMainHeadingPart1 | default "A passionate" }}
+                <span>{{ site.Params.uiText.aboutMainHeadingSpan1 | default "web designer" }}</span>
+                {{ site.Params.uiText.aboutMainHeadingPart2 | default "turning" }}
+                <span>{{ site.Params.uiText.aboutMainHeadingSpan2 | default "ideas" }}</span>
+                {{ site.Params.uiText.aboutMainHeadingPart3 | default "into visually stunning, user-friendly websites." }}
+              </h2>
+              {{- with site.Params.uiText.aboutIntro -}}
+                <p>{{ . | markdownify }}</p>
+              {{- end -}}
+              {{- with site.Params.uiText.aboutExtraParagraph -}}
+                <p>{{ . | markdownify }}</p>
+              {{- end -}}
+              {{- /* Or use .Content for the main text */ -}}
+              {{- /* .Content */ -}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{- /* --- End About Section --- */ -}}
+
+  {{- /* --- Resume Section --- */ -}}
+  {{- partial "resume-section.html" . -}}
+
+  {{- /* --- Services Section --- */ -}}
+  {{- partial "services-section.html" . -}}
+
+  {{- /* --- Call to Action --- */ -}}
+  {{- partial "cta.html" . -}}
+{{- end -}}
+
+{{- define "head" -}}
+  {{- partial "head.html" . -}}
+  {{- /* Any about-page-specific head elements */ -}}
+{{- end -}}
+
+{{- define "body-class" -}}about-page{{- end -}}

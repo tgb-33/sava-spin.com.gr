@@ -1,0 +1,32 @@
+{{- $footerLayout := site.Params.footerLayout | default dict -}}
+{{- $topAlign := $footerLayout.topAlignment | default "logo-left" -}}
+{{- $contentAlign := $footerLayout.contentAlignment | default "default" -}}
+{{- $bottomAlign := $footerLayout.bottomAlignment | default "copy-left" -}}
+
+{{- $footerClasses := slice "site-footer" -}}
+{{- $footerClasses = $footerClasses | append (printf "footer-top--%s" $topAlign) -}}
+{{- $footerClasses = $footerClasses | append (printf "footer-content--%s" $contentAlign) -}}
+{{- $footerClasses = $footerClasses | append (printf "footer-bottom--%s" $bottomAlign) -}}
+{{- $footerClassString := delimit $footerClasses " " -}}
+
+{{- $footerNavLabel := T "footerNavLabel" | default "Footer Navigation" -}}
+
+<footer class="{{ $footerClassString }}" role="contentinfo">
+  <div class="container footer-container">
+
+    <div class="footer-top">
+      <div class="footer-logo">{{ partial "footer/logo.html" . }}</div>
+      <nav class="footer-navigation" aria-label="{{ $footerNavLabel }}">{{ partial "footer/menu.html" . }}</nav>
+    </div>
+
+    <div class="footer-content-area">
+      {{ partial "footer/disclaimers.html" . }}
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copyright">{{ partial "footer/copyright.html" . }}</div>
+      <div class="footer-casino-logos">{{ partial "footer/casino-logos.html" . }}</div>
+    </div>
+
+  </div>
+</footer>

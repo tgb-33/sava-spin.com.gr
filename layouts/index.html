@@ -1,0 +1,20 @@
+{{- define "main" -}}
+<!-- START HEADER DESIGN AREA -->
+<section id="home" class="main-hero-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <!-- START HERO DESIGN AREA -->
+                <div class="hero-content wow fadeInUp delay-0-2s">
+                    {{- .Content -}} {{- /* Основной контент из _index.md идет сюда */ -}}
+                </div>
+                <!-- / END HERO DESIGN AREA -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / END HEADER DESIGN AREA -->
+
+
+{{- partial "faq.html" . -}}
+{{- end -}}

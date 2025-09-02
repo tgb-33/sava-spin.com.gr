@@ -1,0 +1,14 @@
+{{- define "main" -}}
+<div class="page404 container text-center py-20"> {{- /* Базовые стили */ -}}
+  <h1 class="text-4xl font-bold mb-4">{{ site.Params.uiText.notFoundHeading | default "Oops! Page Not Found." }}</h1>
+  <p class="text-lg text-gray-600 mb-8">{{ site.Params.uiText.notFoundText | default "The page you are looking for does not exist." }}</p>
+  <a href="{{ site.Home.RelPermalink }}" class="theme-btn"> {{- /* Используем класс кнопки из шаблона */ -}}
+    {{- site.Params.uiText.breadcrumbHome | default "Go Home" -}}
+  </a>
+</div>
+{{- end -}}
+
+{{- define "head" -}}
+  {{- partial "head.html" . -}}
+  <title>{{ site.Params.uiText.notFoundTitle | default "404 Not Found" }}</title>
+{{- end -}}

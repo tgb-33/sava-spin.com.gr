@@ -1,0 +1,4 @@
+{{- $copyText := site.Params.uiText.footerCopyright | default "©Copyright {siteTitle} All Rights Reserved." -}}
+{{- $copyText = replace $copyText "{year}" now.Year -}}
+{{- $copyText = replace $copyText "{siteTitle}" site.Title -}}
+<p>{{ $copyText | safeHTML }}</p>

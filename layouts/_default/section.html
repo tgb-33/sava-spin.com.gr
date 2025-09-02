@@ -1,0 +1,22 @@
+{{- define "main" -}}
+    <!-- START ABOUT/CONTENT DESIGN AREA -->
+    <section id="about" class="about-area"> {{- /* ID 'about' может быть специфичен только для about.html */ -}}
+        <div class="container">
+            <div class="container-inner">
+                <div class="row align-items-center">
+                    <div class="{{ if .Params.image }}col-lg-7{{ else }}col-lg-12{{ end }}"> {{- /* Колонка на всю ширину, если нет картинки */ -}}
+                        <div class="about-content-part wow fadeInUp delay-0-5s">
+                            {{- partial "breadcrumbs.html" . -}} 
+                            {{- .Content -}} {{- /* Основной контент страницы */ -}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    {{- partial "faq.html" . -}} {{- /* Секция FAQ */ -}}
+
+
+{{- end -}}

@@ -1,0 +1,19 @@
+{{- with .Params.faq -}}
+<section class="faq-section bg-gray-50"> {{- /* Добавлены базовые стили */ -}}
+  <div class="container mx-auto">
+    <h2 class="text-2xl font-bold text-start mb-8">{{ site.Params.uiText.faqTitle | default "Frequently Asked Questions" }}</h2>
+    <div class="faq-list space-y-4 max-w-3xl mx-auto py-4" itemscope itemtype="https://schema.org/FAQPage">
+      {{- range . -}}
+        <div class="faq-item rounded shadow" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 class="faq-question text-lg font-semibold mb-2" itemprop="name">{{ .question | $.Page.RenderString (dict "display" "inline") | safeHTML }}</h3>
+          <div class="faq-answer text-gray-700" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text">
+              {{- .answer | $.Page.RenderString (dict "display" "block") | safeHTML -}}
+            </div>
+          </div>
+        </div>
+      {{- end -}}
+    </div>
+  </div>
+</section>
+{{- end -}}

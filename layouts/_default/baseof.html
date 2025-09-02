@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+
+<head>
+    {{- partial "head.html" . -}}
+    {{- block "head-extra" . -}}{{- end -}}
+</head>
+
+<body>
+
+    {{- partial "header.html" . -}}
+
+    <!-- START MAIN CONTENT WRAPPER -->
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <main class="main-bg o-hidden">
+                {{- block "main" . -}}{{- end -}}
+            </main>
+             {{- partial "footer.html" . -}}
+        </div>
+    </div>
+    <!-- / END MAIN CONTENT WRAPPER -->
+
+
+    <!-- START SCROOL UP DESIGN AREA -->
+    <div class="progress-wrap cursor-pointer">
+        <i class="ri-arrow-up-s-line"></i>
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- / END SCROOL UP DESIGN AREA -->
+
+    <!-- JQUERY JS -->
+    <script src="{{ "js/jquery-3.6.0.min.js" | relURL }}"></script>
+    <!-- BOOTSTRAP JS-->
+    <script src="{{ "js/bootstrap.min.js" | relURL }}"></script>
+    <!-- APPEAR JS -->
+    <script src="{{ "js/appear.min.js" | relURL }}"></script>
+    <!-- MAGNIFICANT JS -->
+    <script src="{{ "js/jquery.magnific-popup.min.js" | relURL }}"></script>
+    <!-- SLICK JS-->
+    <script src="{{ "js/slick.min.js" | relURL }}"></script>
+    <!-- GSAP AND LOCOMOTIV JS-->
+    <script src="{{ "js/gsap.min.js" | relURL }}"></script>
+    <!-- NICE SELECT JS-->
+    <script src="{{ "js/jquery.nice-select.min.js" | relURL }}"></script>
+    <!-- IMAGE LOADER JS-->
+    <script src="{{ "js/imagesloaded.pkgd.min.js" | relURL }}"></script>
+    <!-- ISOTOPE JS-->
+    <script src="{{ "js/isotope.pkgd.min.js" | relURL }}"></script>
+    <!--  WOW ANIMATION JS-->
+    <script src="{{ "js/wow.min.js" | relURL }}"></script>
+    <!-- SCRIPT JS-->
+    <script src="{{ "js/script.js" | relURL }}"></script>
+    {{- block "scripts-extra" . -}}{{- end -}}
+    {{/* === ИСПРАВЛЕННЫЙ раздел для подключения assets/js/app.js === */}}
+    {{- $appJS := resources.Get "js/app.js" -}} {{- /* Получаем файл из assets/js/app.js */}}
+    {{- if $appJS -}}
+    {{- /* Сначала обрабатываем как шаблон Hugo, чтобы вставить переменные */ -}}
+    {{- /* ИСПРАВЛЕНИЕ: Используем функцию resources.ExecuteAsTemplate */ -}}
+    {{- $processedJS := resources.ExecuteAsTemplate "js/app.processed.js" . $appJS -}}
+    {{- /* Результат записываем в новую переменную $processedJS */}}
+
+    {{- /* Собираем JS (можно минифицировать для продакшена) */ -}}
+    {{- $opts := dict "minify" hugo.IsProduction -}}
+    {{- /* Используем обработанный ресурс $processedJS */ -}}
+    {{- $builtJS := $processedJS | js.Build $opts | fingerprint -}}
+
+    {{- /* Создаем тег <script> */ -}}
+    {{- /* Используем построенный ресурс $builtJS */ -}}
+    <script src="{{ $builtJS.RelPermalink }}" integrity="{{ $builtJS.Data.Integrity }}" defer></script>
+    {{- else -}}
+    {{- warnf "[baseof.html] Не найден JS файл: assets/js/app.js" -}}
+    {{- end -}}
+    {{/* === Конец ИСПРАВЛЕННОГО раздела === */}}
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+{{- $page := .Page -}}
+{{- if gt (len $page.TableOfContents) 0 -}}
+  {{- $tocID := printf "toc-%s" ($page.Permalink | md5) -}}
+  {{- $tocTitle := site.Params.uiText.tocTitle | default "Table of Contents" -}}
+  {{- $contentID := printf "toc-content-%s" ($page.Permalink | md5) -}}
+  <aside class="toc-container" id="{{ $tocID }}">
+    <h2 class="toc-title"
+        role="button"
+        tabindex="0"
+        aria-expanded="true"
+        aria-controls="{{ $contentID }}">
+      <div class="toc-header-content">
+        <p>{{- $tocTitle -}}</p>
+        <span class="toc-toggle-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd" />
+          </svg>
+        </span>
+      </div>
+    </h2>
+    <nav id="{{ $contentID }}" class="toc-content">
+      {{- $page.TableOfContents -}}
+    </nav>
+  </aside>
+  <script>
+    (function () {
+      const tocContainers = document.querySelectorAll('.toc-container');
+      tocContainers.forEach(container => {
+        const title = container.querySelector('.toc-title');
+        const content = container.querySelector('.toc-content');
+        const icon = container.querySelector('.toc-toggle-icon');
+        if (!title || !content) {
+          console.warn('TOC shortcode: Could not find title or content element for', container);
+          return;
+        }
+        const toggleToc = () => {
+          const isHidden = content.style.display === 'none';
+          content.style.display = isHidden ? '' : 'none';
+          title.setAttribute('aria-expanded', isHidden);
+          if (icon) {
+            icon.style.transform = isHidden ? 'rotate(0deg)' : 'rotate(-180deg)';
+          }
+        };
+        title.addEventListener('click', toggleToc);
+        title.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleToc();
+          }
+        });
+        if (icon) {
+          icon.style.transform = 'rotate(0deg)';
+          // --- Раскомментируйте для сворачивания по умолчанию ---
+          content.style.display = 'none';
+          title.setAttribute('aria-expanded', 'false');
+          icon.style.transform = 'rotate(-180deg)';
+          // ---
+        }
+      });
+    })();
+  </script>
+  {{/* --- Конец: JavaScript --- */}}
+
+
+  {{/* --- Встроенные стили (темная тема) --- */}}
+  <style>
+    /* Стиль для всего контейнера TOC */
+    .toc-container {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background-color: #2d3748; /* Темно-серый/синий фон */
+      color: #e2e8f0; /* Светло-серый текст по умолчанию */
+      border: 1px solid #4a5568; /* Более светлая граница для темного фона */
+      border-radius: 0.375rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2); /* Чуть заметнее тень */
+    }
+
+    /* Стиль для кликабельного заголовка H2 */
+    .toc-title {
+      /* Убираем flex отсюда, он будет во вложенном div */
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 0.75rem 0;
+      padding: 0 0 0.5rem 0; /* Только паддинг снизу для линии */
+      border-bottom: 1px solid #4a5568; /* Линия под заголовком */
+      cursor: pointer;
+      /* Сброс стилей кнопки */
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      width: 100%;
+      text-align: left;
+      color: inherit; /* Наследуем цвет от .toc-container */
+    }
+    /* Новый класс для обертки внутри H2 */
+    .toc-header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%; /* Занимаем всю ширину H2 */
+    }
+
+    /* Стиль для заголовка при фокусе (доступность) */
+    .toc-title:focus {
+       outline: 2px solid #63b3ed; /* Светло-голубой аутлайн */
+       outline-offset: 2px;
+    }
+    .toc-title:focus:not(:focus-visible) {
+       outline: none;
+    }
+
+    /* Стиль для иконки-переключателя */
+    .toc-toggle-icon {
+      transition: transform 0.2s ease-in-out;
+      flex-shrink: 0;
+      margin-left: 0.5rem;
+      color: #e2e8f0; /* Убедимся, что иконка тоже светлая */
+    }
+    /* Стиль для самого SVG внутри иконки */
+    .toc-toggle-icon svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      display: block;
+      fill: currentColor; /* Использует цвет родителя (.toc-toggle-icon) */
+    }
+
+    /* Стили для списка оглавления */
+    .toc-container nav#{{ $contentID }} ul {
+      padding-left: 0;
+      list-style: none;
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+    }
+    .toc-container nav#{{ $contentID }} > ul { padding-left: 0; }
+    .toc-container nav#{{ $contentID }} ul ul { padding-left: 1.2rem; margin-top: 0.25rem; }
+    .toc-container nav#{{ $contentID }} li { margin-bottom: 0.25rem; }
+    /* Стили для ссылок в оглавлении */
+    .toc-container nav#{{ $contentID }} a {
+      text-decoration: none;
+      color: #90cdf4; /* Светло-голубой для ссылок на темном фоне */
+      font-size: 0.9rem;
+      display: block;
+      padding: 0.1rem 0;
+    }
+    /* Стили для ссылок при наведении/фокусе */
+    .toc-container nav#{{ $contentID }} a:hover,
+    .toc-container nav#{{ $contentID }} a:focus {
+      text-decoration: underline;
+      color: #bee3f8; /* Еще более светлый голубой */
+    }
+  </style>
+  {{/* --- Конец: Стили --- */}}
+
+{{- end -}}
+{{- /* --- Конец: Проверка наличия оглавления --- */}}

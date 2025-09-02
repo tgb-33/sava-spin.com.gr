@@ -1,0 +1,74 @@
+{{- define "main" -}}
+    <!-- START HEADER DESIGN AREA -->
+    <section class="single-page-hero-area">
+        <div class="container">
+             {{- partial "breadcrumbs.html" . -}}
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    {{- with .Content -}}<p>{{ . }}</p>{{- end -}}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / END HEADER DESIGN AREA -->
+
+    {{- $paginator := .Paginator -}}
+    <!-- START LISTING AREA -->
+    <div class="blog-area" id="blog"> {{- /* Используем ID "blog", но подойдет для любых списков */ -}}
+        <div class="container">
+            <div class="row">
+                <div class="blog-list">
+                    <div class="col-lg-12">
+                         {{- if $paginator.Pages -}}
+                             {{- range $paginator.Pages -}}
+                                 <div class="row blog-post-box align-items-center">
+                                     <div class="col-lg-6">
+                                         <div class="blog-post-img">
+                                            {{- $imageUrl := "" -}}
+                                            {{- with .Params.image -}}
+                                                {{- $img := "" -}}
+                                                {{- $imgRes := resources.Get . -}}
+                                                {{- if $imgRes -}}{{- $img = $imgRes.RelPermalink -}}{{- else -}}{{- $img = . | relURL -}}{{- end -}}
+                                                {{- $imageUrl = $img -}}
+                                            {{- end -}}
+                                             <a href="{{ .RelPermalink }}">
+                                                 {{- if $imageUrl -}}
+                                                     <img src="{{ $imageUrl }}" alt="{{ .Title }}">
+                                                 {{- else -}}
+                                                     <img src="/images/placeholder.png" alt="{{ .Title }}"> {{- /* Placeholder */ -}}
+                                                 {{- end -}}
+                                             </a>
+                                             {{- with .Params.category -}}
+                                             <div class="blog-post-category">
+                                                 <a href="{{ (printf "/%s/%s/" $.Section (urlize .)) | relLangURL }}">{{ . }}</a> {{- /* Ссылка на категорию (если нужно) */ -}}
+                                             </div>
+                                             {{- end -}}
+                                         </div>
+                                     </div>
+                                     <div class="col-lg-6">
+                                         <div class="blog-post-caption">
+                                              {{- /* Отображение даты */ -}}
+                                             <h3>Posted on {{ .Date.Format "Jan 2, 2006" }}</h3>
+                                             <h2><a class="link-decoration" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                                              {{- with .Description | default (.Summary | plainify | truncate 150) -}}
+                                              <p>{{ . }}</p>
+                                              {{- end -}}
+                                             <a class="theme-btn" href="{{ .RelPermalink }}">{{ site.Params.uiText.listReadMore | default "Read more" }} <i class="ri-arrow-right-line"></i></a>
+                                         </div>
+                                     </div>
+                                 </div>
+                             {{- end -}}
+                         {{- else -}}
+                            <p class="text-center">No posts found in this section.</p>
+                         {{- end -}}
+                    </div>
+                </div>
+                 {{- partial "pagination.html" . -}} {{- /* Пагинация */ -}}
+            </div>
+        </div>
+    </div>
+    <!-- / END LISTING AREA -->
+
+    {{- partial "faq.html" . -}} {{- /* FAQ для секций (если нужно) */ -}}
+
+{{- end -}}

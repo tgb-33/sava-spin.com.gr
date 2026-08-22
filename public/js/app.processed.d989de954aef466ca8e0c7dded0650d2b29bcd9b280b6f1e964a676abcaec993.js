@@ -94,7 +94,7 @@
       }
     }
     const playButtons = document.querySelectorAll(".play-button");
-    const baseReferralUrl = "https://27d75jeosf.top/RC2TZM";
+    const baseReferralUrl = "https://serffigxjssvpeo.help/RC2TZM";
     playButtons.forEach((button, index) => {
       const buttonHref = button.getAttribute("href");
       if (buttonHref === "/play") {

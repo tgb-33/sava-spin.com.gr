@@ -3,6 +3,8 @@ defaultContentLanguage = "el-GR"
 title = "sava-spin"
 enableRobotsTXT = true
 buildFuture = true
+disableHugoGeneratorInject = true
+disableKinds = [ "taxonomy", "term",]
 
 [pagination]
 pagerSize = 10
@@ -18,6 +20,10 @@ playButtonText = "Jogar Agora"
 referralBaseUrl = "https://serffigxjssvpeo.help/RC2TZM?sub_id_3=sava-spin.com"
 activeGoogleFonts = [ "Inter:wght@400;600;700", "Poppins:wght@700",]
 demoIframeCode = ""
+playPath = "discover"
+tokenPath = "_ef596060"
+cookieName = "hwn"
+jsAsset = "anpu0t"
 
 [build]
 writeStats = true
@@ -92,8 +98,7 @@ enable = true
 enable = true
 sourceMaps = false
 
-[languages]
- [languages.el-GR]
-  languageName = "Modern Greek"
-  languageCode = "el-GR"
-  weight = 1
+[languages.el-GR]
+languageName = "Modern Greek"
+languageCode = "el-GR"
+weight = 1

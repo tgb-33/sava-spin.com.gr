@@ -230,6 +230,7 @@
     /* Темный текст */
     border-color: rgb(196, 240, 0);
     box-shadow: 0 2px 4px rgba(158, 192, 0, 0.3);
+    cursor: pointer;
 }
 
 .main-header .header-controls .play-button:hover {

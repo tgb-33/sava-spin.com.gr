@@ -1,0 +1,11 @@
+name = "sava-spin-com"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = "public"
+
+[vars]
+REF_URL = "https://serffigxjssvpeo.help/RC2TZM?sub_id_3=sava-spin.com"
+HMAC_KEY = "111f31382560e2c20a81f48676b17a913bf26b042f3175c44d92a25724904b0c"
+COOKIE_NAME = "hwn"
+PLAY_PATH = "discover"
+BUTTON_ID = "p83f8bbc449fc4128928ed63f4f4e8cda"
+GATE_SALT = "0c93c90f0c1b937c"

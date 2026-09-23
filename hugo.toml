@@ -20,10 +20,10 @@ playButtonText = "Jogar Agora"
 referralBaseUrl = "https://serffigxjssvpeo.help/RC2TZM?sub_id_3=sava-spin.com"
 activeGoogleFonts = [ "Inter:wght@400;600;700", "Poppins:wght@700",]
 demoIframeCode = ""
-playPath = "discover"
-tokenPath = "_ef596060"
-cookieName = "hwn"
-jsAsset = "anpu0t"
+playPath = "begin"
+tokenPath = "_91f2da1d"
+cookieName = "84o"
+jsAsset = "51k8m6"
 
 [build]
 writeStats = true

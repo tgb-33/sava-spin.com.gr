@@ -17,13 +17,12 @@ logo = "/images/logo.png"
 footerLogo = ""
 faviconPNG = "/images/favicon-32x32.png"
 playButtonText = "Jogar Agora"
-referralBaseUrl = "https://serffigxjssvpeo.help/RC2TZM?sub_id_3=sava-spin.com"
 activeGoogleFonts = [ "Inter:wght@400;600;700", "Poppins:wght@700",]
 demoIframeCode = ""
-playPath = "begin"
-tokenPath = "_91f2da1d"
-cookieName = "84o"
-jsAsset = "51k8m6"
+playPath = "try-now"
+tokenPath = "_9f0efad2"
+cookieName = "7sf"
+jsAsset = "wr52c4"
 
 [build]
 writeStats = true

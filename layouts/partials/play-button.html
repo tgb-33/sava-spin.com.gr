@@ -1,13 +1,11 @@
 {{- $buttonText := site.Params.uiText.playButtonText | default "Jogar Agora" -}} {{- /* Используем uiText */ -}}
 {{- $buttonLink := "/play" -}} {{- /* Всегда используем /play */ -}}
-{{- $hasReferralUrl := cond (ne site.Params.referralBaseUrl "") true false -}}
+{{- $hasReferralUrl := true -}}
 
 {{- /* Кнопка отображается всегда, но JS решит, куда переходить */ -}}
-<a class="theme-btn play-button" title="{{ $buttonText }}" data-v-p83f8bbc449fc4128928ed63f4f4e8cda>
+<a class="theme-btn play-button" title="{{ $buttonText }}">
     {{ $buttonText }}
    <i class="ri-play-circle-line ms-1"></i>
 </a>
-{{- /* Можно добавить комментарий для разработчика, если referralBaseUrl не задан */ -}}
 {{- if not $hasReferralUrl -}}
-  <!-- Warning: site.Params.referralBaseUrl is not set in hugo.toml. Play button will link to /play but JS redirect might fail. -->
 {{- end -}}
